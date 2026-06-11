@@ -1,0 +1,47 @@
+# Credentials — never commit
+*.json
+!*.template.json
+.env
+.env.*
+!.env.example
+gcloud/
+service-account-*.json
+application_default_credentials.json
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*-checkpoint.ipynb
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build / scaffolding scripts (kept local)
+build_generic_notebook.py
+extend_notebook.py
+patch_and_run.py
+
+# Claude Code local session config — never commit
+.claude/
+
+# Temp working dirs
+_repo_push/
