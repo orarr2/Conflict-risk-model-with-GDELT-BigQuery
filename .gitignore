@@ -40,8 +40,5 @@ build_generic_notebook.py
 extend_notebook.py
 patch_and_run.py
 
-# Claude Code local session config — never commit
-.claude/
-
 # Temp working dirs
 _repo_push/
