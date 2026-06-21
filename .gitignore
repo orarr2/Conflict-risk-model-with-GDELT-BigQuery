@@ -1,4 +1,4 @@
-# Credentials — never commit
+# Credentials - never commit
 *.json
 !*.template.json
 .env
