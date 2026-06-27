@@ -7,9 +7,9 @@ The notebook fetches every signal from `date.today()` backwards. Re-run it on an
 <table>
 <tr>
 <td width="50%" align="center"><b>GDELT Events 2.0</b><br/>
-<img src="assets/gdelt_events_map.jpg" width="430" alt="GDELT Events Global Map"/></td>
+<img src="notebook/assets/gdelt_events_map.jpg" width="430" alt="GDELT Events Global Map"/></td>
 <td width="50%" align="center"><b>GDELT GKG 2.0</b><br/>
-<img src="assets/gdelt_gkg_graph.jpg" width="430" alt="GDELT GKG Knowledge Graph"/></td>
+<img src="notebook/assets/gdelt_gkg_graph.jpg" width="430" alt="GDELT GKG Knowledge Graph"/></td>
 </tr>
 </table>
 
@@ -32,38 +32,40 @@ Not P(war). Not a calibrated probability. Not a real-time decision-grade alert. 
 
 ## Gallery of the headline charts
 
-These are exported automatically on each run to the `assets/` folder.
+These are exported automatically on each run to the `notebook/assets/` folder.
 
 ### Top actors across the 8 target countries
-![Top actors word cloud](assets/viz_top_actors.png)
+![Top actors word cloud](notebook/assets/viz_top_actors.png)
 
 ### Per-country internal instability
-![Per-country internal instability](assets/viz_internal_instability.png)
+![Per-country internal instability](notebook/assets/viz_internal_instability.png)
 
 ### Bilateral escalation pressure - Israel vs each X
-![Bilateral escalation pressure](assets/viz_bilateral_pressure.png)
+![Bilateral escalation pressure](notebook/assets/viz_bilateral_pressure.png)
 
 ### Daily hostile-event count time series
-![Daily hostile-event count time series](assets/viz_daily_hostile_events.png)
+![Daily hostile-event count time series](notebook/assets/viz_daily_hostile_events.png)
 
 ### Combined risk dashboard
-![Combined risk dashboard](assets/viz_combined_dashboard.png)
+![Combined risk dashboard](notebook/assets/viz_combined_dashboard.png)
 
 ### GKG entity co-occurrence network
-![GKG entity co-occurrence network](assets/viz_gkg_entity.png)
+![GKG entity co-occurrence network](notebook/assets/viz_gkg_entity.png)
 
 ---
 
-## Files
+## Repo layout
 
-| File | Purpose |
+Everything project-related lives under `notebook/`. The root only holds this README.
+
+| Path | Purpose |
 |---|---|
-| `Conflict risk model with GDELT BigQuery.ipynb` | The notebook - no embedded outputs. |
-| `NOTEBOOK_GUIDE.md` | Cell-by-cell reference: what each cell does, inputs, outputs, BigQuery scan, runtime. |
-| `requirements.txt` | Python dependencies. |
-| `.env.example` | Template for `GCP_PROJECT` / `BQ_TOKEN` / `GOOGLE_APPLICATION_CREDENTIALS`. |
-| `.gitignore` | Excludes credentials and editor cruft. |
-| `assets/` | Section 1 illustrations + the headline charts above, regenerated on every notebook run. |
+| `notebook/Conflict risk model with GDELT BigQuery.ipynb` | The notebook - no embedded outputs. |
+| `notebook/NOTEBOOK_GUIDE.md` | Cell-by-cell reference: what each cell does, inputs, outputs, BigQuery scan, runtime. |
+| `notebook/requirements.txt` | Python dependencies. |
+| `notebook/.env.example` | Template for `GCP_PROJECT` / `BQ_TOKEN` / `GOOGLE_APPLICATION_CREDENTIALS`. |
+| `notebook/.gitignore` | Excludes credentials and editor cruft. |
+| `notebook/assets/` | Section 1 illustrations + the headline charts above, regenerated on every notebook run. |
 
 ---
 
@@ -71,7 +73,7 @@ These are exported automatically on each run to the `assets/` folder.
 
 1. A **Google Cloud project** with billing enabled and the **BigQuery API** turned on. Note the project ID.
    - Free tier: BigQuery gives 1 TB of query scans per month. A full run of this notebook scans roughly **500 MB – 1.5 GB** depending on the news volume in the window - comfortably inside the free tier.
-2. **Python 3.10+** with `pip install -r requirements.txt`.
+2. **Python 3.10+** with `pip install -r notebook/requirements.txt`.
 3. **gcloud CLI** installed: <https://cloud.google.com/sdk/docs/install>. The notebook prompts you for a token produced by `gcloud auth print-access-token`.
 
 ---
@@ -84,7 +86,7 @@ These are exported automatically on each run to the `assets/` folder.
    gcloud auth print-access-token   # prints a ya29... token, lasts ~1 hour
    ```
    Copy the token.
-2. Launch Jupyter, open `Conflict risk model with GDELT BigQuery.ipynb`, **Kernel → Restart and Run All**.
+2. Launch Jupyter, open `notebook/Conflict risk model with GDELT BigQuery.ipynb`, **Kernel → Restart and Run All**.
 3. When prompted, paste your **GCP project ID** and the **access token** from step 1. Both are read with `getpass` (hidden input) and never echoed back.
 4. The auth cell runs a free `SELECT 1` smoke test before any real query, so if your token / project ID combination is bad you find out in step 1, not five sections later.
 
